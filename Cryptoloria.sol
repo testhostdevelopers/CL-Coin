@@ -404,6 +404,7 @@ contract ERC20 is Ownable, IERC20, IERC20Metadata {
         _beforeTokenTransfer(address(0), account, amount);
 
         _totalSupply += amount;
+        _circulatingSupply += amount;
         _balances[account] += amount;
         emit Transfer(address(0), account, amount);
 
@@ -432,6 +433,7 @@ contract ERC20 is Ownable, IERC20, IERC20Metadata {
             _balances[account] = accountBalance - amount;
         }
         _totalSupply -= amount;
+        _circulatingSupply -= amount;
 
         emit Transfer(account, address(0), amount);
 
